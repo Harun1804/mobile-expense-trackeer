@@ -1,4 +1,4 @@
-import 'package:expense_trackeer/exepense_list.dart';
+import 'package:expense_trackeer/widgets/expense-list/expenses_list.dart';
 import 'package:expense_trackeer/model/expense.dart';
 import 'package:flutter/material.dart';
 
