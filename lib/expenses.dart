@@ -1,3 +1,4 @@
+import 'package:expense_trackeer/exepense_list.dart';
 import 'package:expense_trackeer/model/expense.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class _ExpensesState extends State<Expenses> {
       body: Column(
         children: [
           Text("The chart"),
-          Text("The list")
+          Expanded(child: ExpenseList(expenses: _registeredExpenses))
         ],
       ),
     );
