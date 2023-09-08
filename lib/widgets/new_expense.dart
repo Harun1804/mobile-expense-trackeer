@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:expense_trackeer/model/expense.dart';
 
 class NewExpense extends StatefulWidget {
-  const NewExpense({super.key});
+  const NewExpense({super.key, required this.onAddExpense});
+
+  final Function(Expense expense) onAddExpense;
 
   @override
   State<NewExpense> createState() => _NewExpenseState();
@@ -41,11 +43,21 @@ class _NewExpenseState extends State<NewExpense> {
               onPressed: () {
                 Navigator.pop(ctx);
               },
-              child: const Text('Testing')
+              child: const Text('Okay')
           )
         ],
       ));
+      return;
     }
+
+    widget.onAddExpense(
+        Expense(
+          title: _titleController.text,
+          amount: enteredAmount,
+          date: _selectedDate!,
+          category: _selectedCategory
+      )
+    );
   }
 
   @override
@@ -129,9 +141,7 @@ class _NewExpenseState extends State<NewExpense> {
                 TextButton(onPressed: (){
                   Navigator.pop(context);
                 }, child: const Text('Cancel')),
-                ElevatedButton(onPressed: (){
-                  //print(_titleController.text);
-                }, child: const Text('Save Changes')),
+                ElevatedButton(onPressed: _submitExpenseData, child: const Text('Save Changes')),
               ],
             )
           ],
